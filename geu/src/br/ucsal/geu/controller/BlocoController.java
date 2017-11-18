@@ -14,9 +14,7 @@ import br.ucsal.geu.model.Bloco;
 @WebServlet("/blocos")
 public class BlocoController extends HttpServlet {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	@Override
