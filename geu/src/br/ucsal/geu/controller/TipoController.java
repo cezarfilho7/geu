@@ -24,7 +24,7 @@ public class TipoController extends HttpServlet {
 			request.getRequestDispatcher("tipoform.jsp").forward(request, response);
 		} else {
 			TipoDAO dao = new TipoDAO();
-			request.setAttribute("lista", dao.listar());
+			request.setAttribute("lista2", dao.listar());
 			request.getRequestDispatcher("tipolist.jsp").forward(request, response);
 		}
 	}
@@ -39,7 +39,7 @@ public class TipoController extends HttpServlet {
 		TipoDAO dao = new TipoDAO();
 		dao.inserir(tipo);
 		
-		request.setAttribute("lista", dao.listar());
+		request.setAttribute("lista2", dao.listar());
 		request.getRequestDispatcher("tipolist.jsp").forward(request, response);				
 	}
 }

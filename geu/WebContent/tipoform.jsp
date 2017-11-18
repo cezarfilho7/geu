@@ -22,7 +22,7 @@
 		</div>
 		<form action="tipos" method="post">
 			Nome:<input type="text" name="nome" /><br>
-			 Descrição:<input type="text" name="letra" /><br> <br>
+			 Descrição:<input type="text" name="descricao" /><br> <br>
 			<input type="submit" value="Salvar" />
 
 		</form>

@@ -12,6 +12,10 @@ public class Tipo {
 		this.descricao = descricao;
 	}
 	
+	public Tipo() {
+		
+	}
+	
 	public Integer getId() {
 		return id;
 	}

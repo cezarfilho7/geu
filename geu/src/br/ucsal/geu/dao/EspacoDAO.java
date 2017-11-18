@@ -10,9 +10,9 @@ import java.util.List;
 import br.ucsal.geu.model.Bloco;
 import br.ucsal.geu.model.Espaco;
 import br.ucsal.util.Conexao;
+import br.ucsal.geu.model.Tipo;
 
 public class EspacoDAO {
-
 
 	private Conexao conexao;
 
@@ -26,12 +26,14 @@ public class EspacoDAO {
 		try {
 			stmt = conexao.getConnection().createStatement();
 			ResultSet rs = stmt.executeQuery("select id,identificacao,andar,funcao,bloco_id from espacos");
-			while(rs.next()) {
+			while (rs.next()) {
 				Espaco e = new Espaco();
 				e.setId(rs.getInt("id"));
 				e.setIdentificacao(rs.getString("identificacao"));
 				e.setAndar(rs.getString("andar"));
-				e.setFuncao(rs.getString("funcao"));
+				Tipo tipo = new Tipo();
+				tipo.setId(rs.getInt("tipo_id"));
+				e.set
 				Bloco bloco = new Bloco();
 				bloco.setId(rs.getInt("bloco_id"));
 				e.setBloco(bloco);
@@ -41,23 +43,27 @@ public class EspacoDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	
+
 		return espacos;
 	}
-	
-	
+
 	public List<Espaco> listar() {
 		Statement stmt;
 		List<Espaco> espacos = new ArrayList<>();
 		try {
 			stmt = conexao.getConnection().createStatement();
-			ResultSet rs = stmt.executeQuery("select espacos.id,identificacao,andar,funcao,bloco_id,nome,letra,latitude,longitude from espacos,blocos where espacos.bloco_id = blocos.id;");
-			while(rs.next()) {
+			ResultSet rs = stmt.executeQuery(
+					"select espacos.id,identificacao,andar,funcao,bloco_id,nome,letra,latitude,longitude from espacos,blocos where espacos.bloco_id = blocos.id;");
+			while (rs.next()) {
 				Espaco e = new Espaco();
 				e.setId(rs.getInt("id"));
 				e.setIdentificacao(rs.getString("identificacao"));
 				e.setAndar(rs.getString("andar"));
-				e.setFuncao(rs.getString("funcao"));
+				
+				Tipo tipo = new Tipo();
+				tipo.setId(rs.getInt("id"));
+				tipo.setNome(rs.getString("nome"));
+				tipo.setDescricao(rs.getString("descricao"));
 				
 				Bloco bloco = new Bloco();
 				bloco.setId(rs.getInt("bloco_id"));
@@ -65,7 +71,7 @@ public class EspacoDAO {
 				bloco.setLetra(rs.getString("letra"));
 				bloco.setLatitude(rs.getString("latitude"));
 				bloco.setLongitude(rs.getString("longitude"));
-				
+
 				e.setBloco(bloco);
 				espacos.add(e);
 			}
@@ -73,10 +79,9 @@ public class EspacoDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	
+
 		return espacos;
 	}
-
 
 	public void inserir(Espaco espaco) {
 		try {
