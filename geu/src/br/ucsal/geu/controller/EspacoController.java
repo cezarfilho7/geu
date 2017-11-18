@@ -49,16 +49,20 @@ public class EspacoController extends HttpServlet {
 		Espaco espaco = new Espaco();
 		espaco.setIdentificacao(identificacao);
 		espaco.setAndar(andar);
+		
 		BlocoDAO blocoDAO = new BlocoDAO();
 		int idBloco = Integer.parseInt(blocoID);
 		Bloco bloco = blocoDAO.getByID(idBloco);
 		espaco.setBloco(bloco);
+		
 		TipoDAO tipoDAO = new TipoDAO();
 		int idTipo = Integer.parseInt(tipoID);
-		Tipo tipo = tipoDAO.getByID(idBloco);
+		Tipo tipo = tipoDAO.getByID(idTipo);
 		espaco.setTipo(tipo);
+		
 		EspacoDAO dao = new EspacoDAO();
 		dao.inserir(espaco);
+		
 		request.setAttribute("lista", dao.listar());
 		request.getRequestDispatcher("espacolist.jsp").forward(request, response);
 

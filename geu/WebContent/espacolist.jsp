@@ -35,6 +35,7 @@
  <td>${e.andar}</td>
  <td>${e.bloco.letra}</td>
  <td>${e.tipo.nome}</td>
+ <td>${e.tipo.descricao}</td>
 <tr>
 </c:forEach>
 </table>

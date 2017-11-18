@@ -10,7 +10,6 @@
 	<link href="/geu/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link href="/geu/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
 	<link href="/geu//css/app.css" rel="stylesheet">
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 
 </head>
 
@@ -33,7 +32,5 @@
 		src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
 	<script src="/geu/bootstrap/js/bootstrap.min.js"></script>
-
-
 </body>
 </html>

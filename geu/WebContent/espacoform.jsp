@@ -37,7 +37,7 @@
 		<br> Tipo: <select name="tipo" >
 			<option value="" selected>Selecione</option>
 			<c:forEach var="tipo" items="${lista2}">
-				<option value="${tipo.id}">${tipo.descricao}</option>
+				<option value="${tipo.id}">${tipo.nome}</option>
 			</c:forEach>
 		</select><br>
 		<button type="submit">Salvar</button>

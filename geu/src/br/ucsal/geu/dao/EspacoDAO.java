@@ -25,18 +25,21 @@ public class EspacoDAO {
 		List<Espaco> espacos = new ArrayList<>();
 		try {
 			stmt = conexao.getConnection().createStatement();
-			ResultSet rs = stmt.executeQuery("select id,identificacao,andar,funcao,bloco_id from espacos");
+			ResultSet rs = stmt.executeQuery("select id,identificacao,andar,funcao,bloco_id, tipo_id from espacos");
 			while (rs.next()) {
 				Espaco e = new Espaco();
 				e.setId(rs.getInt("id"));
 				e.setIdentificacao(rs.getString("identificacao"));
 				e.setAndar(rs.getString("andar"));
+				
 				Tipo tipo = new Tipo();
 				tipo.setId(rs.getInt("tipo_id"));
-				e.set
+				e.setTipo(tipo);
+				
 				Bloco bloco = new Bloco();
 				bloco.setId(rs.getInt("bloco_id"));
 				e.setBloco(bloco);
+				
 				espacos.add(e);
 			}
 			stmt.close();
@@ -53,7 +56,7 @@ public class EspacoDAO {
 		try {
 			stmt = conexao.getConnection().createStatement();
 			ResultSet rs = stmt.executeQuery(
-					"select espacos.id,identificacao,andar,funcao,bloco_id,nome,letra,latitude,longitude from espacos,blocos where espacos.bloco_id = blocos.id;");
+					"select espacos.id,identificacao,andar,funcao,bloco_id,nome,letra,latitude,longitude from espacos,blocos where espacos.bloco_id = blocos.id and espacos.tipo_id = tipo.id;");
 			while (rs.next()) {
 				Espaco e = new Espaco();
 				e.setId(rs.getInt("id"));
@@ -85,13 +88,11 @@ public class EspacoDAO {
 
 	public void inserir(Espaco espaco) {
 		try {
-
-			PreparedStatement ps = conexao.getConnection()
-					.prepareStatement("insert into Espacos (identificacao,andar,funcao,bloco_id) values (?,?,?,?);");
+			PreparedStatement ps = conexao.getConnection().prepareStatement("insert into espacos (identificacao,andar,funcao,bloco_id, tipo_id) values (?,?,?,?,?);");
 			ps.setString(1, espaco.getIdentificacao());
 			ps.setString(2, espaco.getAndar());
-			ps.setString(3, espaco.getFuncao());
 			ps.setInt(4, espaco.getBloco().getId());
+			ps.setInt(3, espaco.getTipo().getId());
 			ps.execute();
 			ps.close();
 		} catch (SQLException e) {
