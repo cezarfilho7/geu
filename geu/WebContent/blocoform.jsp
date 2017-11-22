@@ -2,14 +2,15 @@
 <!DOCTYPE html >
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Gerenciador de Espaços</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gerenciador de Espaços</title>
 
-	<link href="/geu/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<link href="/geu/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
-	<link href="/geu//css/app.css" rel="stylesheet">
+<link href="/geu/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/geu/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="/geu//css/app.css" rel="stylesheet">
+
 
 </head>
 
@@ -20,10 +21,10 @@
 			<h1>Inserir Bloco</h1>
 		</div>
 		<form action="blocos" method="post">
-			Nome:<input type="text" name="nome" /><br> 
-			Letra:<input type="text" name="letra" /><br> 
-			Latitude:<input type="text"	name="latitude" /><br> Longitude:<input type="text" name="longitude" /><br>
-			<input type="submit" value="Salvar"/>
+			Nome:<input type="text" name="nome" /><br> Letra:<input
+				type="text" name="letra" /><br> Latitude:<input type="text"
+				name="latitude" /><br> Longitude:<input type="text" name="longitude" /><br>
+			<input type="submit" value="Salvar" />
 
 		</form>
 	</div>

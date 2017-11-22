@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import br.ucsal.geu.dao.TipoDAO;
 import br.ucsal.geu.model.Tipo;
 
@@ -17,13 +18,12 @@ public class TipoController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		String q = request.getParameter("q");
 		if (q != null && q.equals("new")) {
 			request.getRequestDispatcher("tipoform.jsp").forward(request, response);
 		} else {
 			TipoDAO dao = new TipoDAO();
-			request.setAttribute("lista2", dao.listar());
+			request.setAttribute("lista", dao.listar());
 			request.getRequestDispatcher("tipolist.jsp").forward(request, response);
 		}
 	}
@@ -38,7 +38,7 @@ public class TipoController extends HttpServlet {
 		TipoDAO dao = new TipoDAO();
 		dao.inserir(tipo);
 		
-		request.setAttribute("lista2", dao.listar());
-		request.getRequestDispatcher("tipolist.jsp").forward(request, response);				
+		request.setAttribute("lista2",  dao.listar());
+		request.getRequestDispatcher("blocolist.jsp").forward(request, response);
 	}
 }

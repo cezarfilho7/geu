@@ -1,23 +1,27 @@
 package br.ucsal.geu.controller;
 
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import br.ucsal.geu.dao.BlocoDAO;
 import br.ucsal.geu.model.Bloco;
 
 @WebServlet("/blocos")
 public class BlocoController extends HttpServlet {
-	
+
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		String q = request.getParameter("q");
 		if (q != null && q.equals("new")) {
 			request.getRequestDispatcher("blocoform.jsp").forward(request, response);

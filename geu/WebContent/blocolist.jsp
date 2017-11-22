@@ -25,8 +25,7 @@
 <tr>
 <th> Nome </th>
 <th> Letra </th>
-<th> Latitude</th>
-<th> Longitude </th>
+<th> Latitude/Longitude </th>
  
 </tr>
 
@@ -34,9 +33,7 @@
 <tr>
  <td> ${e.nome} </td>
  <td> ${e.letra} </td>
- <td> ${e.latitude} </td>
- <td> ${e.longitude} </td>
- 
+ <td> ${e.latitude}/${e.longitude} </td> 
 <tr>
 </c:forEach>
 </table>
