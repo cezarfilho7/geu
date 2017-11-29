@@ -14,6 +14,7 @@ public class TipoDAO {
 
 	private Conexao conexao;
 
+	
 	public TipoDAO() {
 		this.conexao = Conexao.getConexao();
 	}
@@ -24,7 +25,7 @@ public class TipoDAO {
 		try {
 			stmt = conexao.getConnection().createStatement();
 			ResultSet rs = stmt.executeQuery("select id,nome,descricao from tipos;");
-			while (rs.next()) {
+			while(rs.next()) {
 				Tipo t = new Tipo();
 				t.setId(rs.getInt("id"));
 				t.setNome(rs.getString("nome"));
@@ -35,30 +36,32 @@ public class TipoDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	
 		return tipos;
 	}
 
 	public void inserir(Tipo tipo) {
 		try {
+			
 			PreparedStatement ps = conexao.getConnection()
 					.prepareStatement("insert into tipos (nome,descricao) values (?,?);");
 			ps.setString(1, tipo.getNome());
 			ps.setString(2, tipo.getDescricao());
 			ps.execute();
 			ps.close();
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+
 	}
 
 	public Tipo getByID(int id) {
 		Tipo t = null;
 		try {
-			PreparedStatement ps = conexao.getConnection()
-					.prepareStatement("select id,nome,descricao from tipos where id=?");
+			PreparedStatement ps = conexao.getConnection().prepareStatement("select id,nome,descricao from tipos where id=?");
 			ps.setInt(1, id);
 			ResultSet rs = ps.executeQuery();
-			if (rs.next()) {
+			if(rs.next()) {
 				t = new Tipo();
 				t.setId(rs.getInt("id"));
 				t.setNome(rs.getString("nome"));
@@ -70,8 +73,13 @@ public class TipoDAO {
 		}
 		return t;
 	}
-
+	
 	public void close() {
 		conexao.closeConnection();
 	}
+	
+	
+	
+
+
 }

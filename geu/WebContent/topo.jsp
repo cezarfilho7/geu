@@ -12,6 +12,7 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="/geu/index.jsp">Inicio</a></li>
+            
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blocos <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -19,13 +20,15 @@
                 <li><a href="/geu/blocos?q=new">Novo</a></li>
               </ul>
             </li>
-             <li class="dropdown">
+            
+            <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Tipos <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="/geu/tipos">Listar</a></li>
                 <li><a href="/geu/tipos?q=new">Novo</a></li>
               </ul>
             </li>
+            
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Espacos <span class="caret"></span></a>
               <ul class="dropdown-menu">
@@ -33,6 +36,24 @@
                 <li><a href="/geu/espacos?q=new">Novo</a></li>
               </ul>
             </li>
+            
+                   <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuários <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/geu/usuarios">Listar</a></li>
+                <li><a href="/geu/usuarios?q=new">Novo</a></li>
+              </ul>
+            </li>
+            
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Reserva <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="/geu/reservas">Listar</a></li>
+                <li><a href="/geu/reservas?q=new">Nova</a></li>
+              </ul>
+            </li>
+            
+            
           </ul>
         </div><!--/.nav-collapse -->
       </div>

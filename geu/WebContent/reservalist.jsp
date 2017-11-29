@@ -18,20 +18,29 @@
 <c:import url="topo.jsp"></c:import>
 <div class="container">
 <div class="page-header">
-<h1> Lista Tipo </h1>
+<h1> Lista Reservas </h1>
 </div>
 
 <table class="table" >
 <tr>
-<th> Nome </th>
-<th> Descricao </th>
+<th> Espaco </th>
+<th> Data </th>
+<th> Hora Inicio</th>
+<th> Hora Fim </th>
+<th> Titulo </th>
+<th> Solicitante </th>
  
 </tr>
 
 <c:forEach var="e" items="${lista}">
 <tr>
- <td> ${e.nome} </td>
- <td> ${e.descricao} </td>
+ <td> ${e.espaco.identificacao} </td>
+ <td> ${e.data} </td>
+ <td> ${e.horaInicio} </td>
+ <td> ${e.horaFim} </td>
+ <td> ${e.titulo} </td>
+ <td> ${e.solicitante} </td>
+ 
  
 <tr>
 </c:forEach>

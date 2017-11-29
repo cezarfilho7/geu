@@ -33,13 +33,15 @@
 				<option value="${bloco.id}">${bloco.letra}</option>
 			</c:forEach>
 		</select>
-		<select name="tipo">
-			<option value="">Selecione</option>
-			<c:forEach var="tipo" items="${lista2}">
-			<option value="${tipo.id}">${tipo.nome}</option>
+		<br>
+		Tipo: 
+		<select name="tipo" >
+			<option value="" selected>Selecione</option>
+			<c:forEach var="tipo" items="${listaTipo}">
+				<option value="${tipo.id}">${tipo.nome}</option>
 			</c:forEach>
 		</select>
-		<br> 
+		<br>
 		<button type="submit">Salvar</button>
 	</form>
 

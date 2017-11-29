@@ -22,6 +22,7 @@ public class BlocoController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		String q = request.getParameter("q");
 		if (q != null && q.equals("new")) {
 			request.getRequestDispatcher("blocoform.jsp").forward(request, response);

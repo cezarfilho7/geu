@@ -18,13 +18,26 @@
 	<c:import url="topo.jsp"></c:import>
 	<div class="container">
 		<div class="page-header">
-			<h1>Inserir Tipo</h1>
+			<h1>Inserir Reserva</h1>
 		</div>
-		<form action="tipos" method="post">
-			Nome:<input type="text" name="nome" /><br> 
-			Descricao:<input type="text" name="descricao" /><br> 
+		<form action="reservas" method="post">
+		Espaço: 
+		<select name="espaco" >
+			<option value="" selected>Selecione</option>
+			<c:forEach var="espaco" items="${lista}">
+				<option value="${espaco.id}">${espaco.identificacao}</option>
+			</c:forEach>
+		</select>
+		<br>
+			Titulo: <input type="text" name="titulo" /><br> 
+			Descrição: <input type="text" name="descricao" /><br> 
+			Justificativa:<input type="text" name="justificativa" /><br>
+			Solicitante:<input type="text" name="solicitante" /><br>
+						Telefone:<input type="text" name="telefone" /><br>
+						Data (dd/MM/yyyy):<input type="text" name="data" /><br>
+						Inicio (Hora HH:MM):<input type="text" name="inicio" /><br>
+						Fim (Hora HH:MM):<input type="text" name="fim" /><br>			
 			<input type="submit" value="Salvar" />
-
 		</form>
 	</div>
 

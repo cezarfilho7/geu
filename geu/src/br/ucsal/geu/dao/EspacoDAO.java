@@ -20,7 +20,7 @@ public class EspacoDAO {
 	public EspacoDAO() {
 		this.conexao = Conexao.getConexao();
 	}
-	/*
+
 	public List<Espaco> listarLazy() {
 		Statement stmt;
 		List<Espaco> espacos = new ArrayList<>();
@@ -32,12 +32,15 @@ public class EspacoDAO {
 				e.setId(rs.getInt("id"));
 				e.setIdentificacao(rs.getString("identificacao"));
 				e.setAndar(rs.getString("andar"));
+				
 				Bloco bloco = new Bloco();
 				bloco.setId(rs.getInt("bloco_id"));
 				e.setBloco(bloco);
+				
 				Tipo tipo = new Tipo();
 				tipo.setId(rs.getInt("tipo_id"));
 				e.setTipo(tipo);
+				
 				espacos.add(e);
 			}
 			stmt.close();
@@ -47,7 +50,7 @@ public class EspacoDAO {
 	
 		return espacos;
 	}
-	*/
+	
 	
 	public List<Espaco> listar() {
 		Statement stmt;
@@ -68,13 +71,15 @@ public class EspacoDAO {
 				bloco.setLatitude(rs.getString("latitude"));
 				bloco.setLongitude(rs.getString("longitude"));
 				
-				Tipo tipo = new Tipo();
-				tipo.setId(rs.getInt("tipo_id"));
-				tipo.setNome(rs.getString("nome"));
-				tipo.setDescricao(rs.getString("descricao"));
+				Tipo t = new Tipo();
+				t.setId(rs.getInt("tipo_id"));
+				t.setNome(rs.getString("nometipo"));
+				t.setDescricao(rs.getString("descricao"));
+				
 				
 				e.setBloco(bloco);
-				e.setTipo(tipo);
+				e.setTipo(t);
+				
 				espacos.add(e);
 			}
 			stmt.close();
@@ -90,16 +95,44 @@ public class EspacoDAO {
 		try {
 
 			PreparedStatement ps = conexao.getConnection()
-					.prepareStatement("insert into espacos (identificacao,andar,tipo_id,bloco_id) values (?,?,?,?);");
+					.prepareStatement("insert into Espacos (identificacao,andar,tipo_id,bloco_id) values (?,?,?,?);");
 			ps.setString(1, espaco.getIdentificacao());
 			ps.setString(2, espaco.getAndar());
-			ps.setInt(3, espaco.getBloco().getId());
-			ps.setInt(4,  espaco.getTipo().getId());
+			ps.setInt(3, espaco.getTipo().getId());
+			ps.setInt(4, espaco.getBloco().getId());
 			ps.execute();
 			ps.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+
+	public Espaco getByID(int id) {
+		Espaco espaco = null;
+		try {
+			PreparedStatement ps = conexao.getConnection().prepareStatement("select id,identificacao,andar,tipo_id,bloco_id from espacos where id=?");
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				espaco = new Espaco();
+				espaco.setId(rs.getInt("id"));
+				espaco.setIdentificacao(rs.getString("identificacao"));
+				espaco.setAndar(rs.getString("andar"));
+				
+				Bloco bloco = new Bloco();
+				bloco.setId(rs.getInt("bloco_id"));
+				espaco.setBloco(bloco);
+				
+				Tipo tipo = new Tipo();
+				tipo.setId(rs.getInt("tipo_id"));
+				espaco.setTipo(tipo);
+				
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return espaco;
 	}
 
 }
